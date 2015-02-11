@@ -1,0 +1,20 @@
+
+
+
+First declare 4 integers;
+2 for the input numbers and 2 for the output numbers;
+
+tell the user to enter a number
+wait for the user to enter the number
+
+tell the user to enter another number
+wait for the user to enter another number
+
+
+once they enter the second number we add them together to get the sum
+and multiply the 2 numbers to get the product
+
+print out the sum
+print out the product
+
+return;

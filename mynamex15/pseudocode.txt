@@ -1,0 +1,15 @@
+Initialize an integer;
+
+Make a for loop;
+Assign that number to zero;
+Since we want it to stop after 15 times, we set its exit condition to less than 15;
+
+Since we're starting at zero, and counting to 14 (less than 15), it loops 15 times;
+
+and each loop we're incrementing the integer by 1;
+
+each time through the loop we printf('Dwight doane');
+
+if integer is less than 15, loop again;
+
+then after the loop exits we return 0;
