@@ -1,0 +1,21 @@
+get hourley rate and hours worked
+
+
+if hours_worked >= 40 he gets over time
+else hes not getting over time
+
+
+  federal witholding is .27;
+  meidcal insurance is .14;
+  use variables to calculate tax;
+
+
+print
+Hourly Rate:
+Hours Worked:
+Regular Pay:
+OT Pay:
+Gross Pay:
+Federal Tax (27%):
+Medical Insurance (14%):
+Net Pay:

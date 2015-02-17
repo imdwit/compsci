@@ -8,14 +8,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define FEDTAX .28
-#define MEDICALINSURANCE .075
+#define FEDTAX .27
+#define MEDICALINSURANCE .14
 
 
 
 float calculateTax(float pay, float tax) {
-    pay = (pay * tax);
-    return pay;
+    float taxedPay = (pay * tax);
+    return taxedPay;
 }
 
 int main() {
@@ -28,14 +28,14 @@ int main() {
     float netPay;
     float fedTaxed;
     float medicalTax;
-    
-    
+
+
     printf("Enter hours worked: \n");
     scanf("%f", &hoursWorked);
-    
+
     printf("Enter hourly rate: \n");
     scanf("%f", &hourlyRate);
-    
+
     if(hoursWorked > 40) {
         //WORKED OVERTIME
         regPay = (hourlyRate * 40);
@@ -46,23 +46,29 @@ int main() {
         //DID NOT WORK OVERTIME
         regPay = (hourlyRate * hoursWorked);
         overTimePay = 0;
-        grossPay = (hourlyRate * hoursWorked);
+        grossPay = regPay;
     } ///END ELSE
+
+
+    fedTaxed = FEDTAX * grossPay;//calculateTax(grossPay, FEDTAX);
+    medicalTax = MEDICALINSURANCE * grossPay;
+    netPay = grossPay - (fedTaxed + medicalTax);
     
-    
-    fedTaxed = calculateTax(grossPay, FEDTAX);
-    medicalTax = calculateTax(grossPay, MEDICALINSURANCE);
-    
-    printf("Regular pay is $%.2f \n", regPay);
+
+    printf("Hourly Rate: $%.2f \n", hourlyRate);
+    printf("Hours Worked: $%.2f \n", hoursWorked);
     printf("Overtime pay is $%.2f \n", overTimePay);
-    
+    printf("Gross pay is $%.2f \n", grossPay);
+    printf("Regular pay is $%.2f \n", regPay);
+
+
     printf("Federal tax amount: $%.2f \n", fedTaxed);
     printf("Medical Insurance paid: $%.2f \n", medicalTax);
-    
-    netPay = grossPay - (fedTaxed + medicalTax);
+
+
     printf("Net pay is $%.2f \n", netPay);
-    
-    
+
+
     return 0;
 } ///// END MAIN()
 
