@@ -6,17 +6,13 @@
 #define CLSWIN  system("cls");
 
 
-int pause() {
-    return 12000;
-}
-
 int main() {
     int numbersArray[0];
     int i =  1;
     int len = 0;
     int num;
     char choice;
-    int option = 0;
+    int quit = 0;
 
 
 
@@ -25,8 +21,11 @@ int main() {
 
 
     do { //DO WHILE STARTS HERE
-
+        CLSUNIX;
+        //CLSWIN FOR UNIX/MAC USES
+        CLSWIN;
         //CLSWIN for WINDOWS users
+        
         printf("########XXXXXXXXXXX##########\n");
         printf("-------- MAIN MENU ----------\n");
         printf("=============================\n");
@@ -44,60 +43,40 @@ int main() {
         switch(choice) {
 
             case 'A':
-                
-              
                 printf("Enter an integer: \n");
                 scanf("%i", &num);
                 numbersArray[len] = num;
                 len++;
-                option = 1;
-                pause();
                 break;
 
             case 'B':
                 printf("Option B \n");
-                option = 2;
-                pause();
-
                 break;
 
             case 'C':
                 printf("Option C \n");
-                option = 3;
-                pause();
                 break;
 
             case 'D':
                 printf("Option D \n");
-                option = 4;
-                pause();
                 break;
 
             case 'E':
-                
                 for(int i = 0; i < len; i++) {
-                    printf("%i, ",numbersArray[i]);
+                    printf("%i, ", numbersArray[i]);
                 }
                 printf("\n\n\n");
-                option = 5;
-                pause();
                 break;
 
             case 'Q':
-                printf("Quit \n");
-                option = 0;
-                pause();
+                printf("Quitting... \n");
+                quit = 1;
                 break;
 
             default:
-                printf(" ");
-                
-                continue;
-                //printf("Pick another option \n");
-               // pause();
+                printf("Pick another option \n");
         }// END SWITCH
 
-    } while(option > 0 ); ///WHILE CHOICE DOESNT EQUAL 4;
+    } while(quit != 1 ); ///WHILE quit DOESNT EQUAL 1;
 
-    pause();
 } //END MAIN
