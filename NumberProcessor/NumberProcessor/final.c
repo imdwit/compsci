@@ -79,4 +79,5 @@ int main() {
                 printf("Pick another option \n");
             }// END SWITCH
     } while(quit != 1 ); ///WHILE quit DOESNT EQUAL 1;
+    return 0;
 } //END MAIN
