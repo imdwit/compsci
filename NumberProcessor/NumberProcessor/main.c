@@ -1,31 +1,72 @@
-#define _CRT_SECURE_NOWARNINGS
-
+//Group A Exam 2 Code 3/1/2015
+#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdlib.h>
-#define CLSUNIX  system("clear");
-#define CLSWIN  system("cls");
+#define CLSUNIX system("clear")
+#define CLSWIN system("cls")
+#define PAUSE system("pause")
 
+int enterNumber() {
+    printf("Enter a new number: \n");
+    int num;
+    scanf("%i", &num);
+    
+    printf("ENTEREED: %i \n", num);
+    return num;
+}
+
+int findHighestNumber(int num, int highest) {
+    if(num > highest) {
+        return num;
+    }
+    else{
+        return highest;
+    }
+}
+
+int findLowestNumber(int num, int lowest) {
+    
+    if(lowest == 0) lowest = num;
+    if(num > lowest) {
+        return lowest;
+    }
+    else {
+        return num;
+    }
+}
+
+
+void calcAverage(int total, int counter) {
+    int average;
+    average = total/counter;
+    printf("The average of all the numbers is : %i \n", average);
+}
+
+void printHighestNumber(int highest) {
+    printf("The highest number is: %i \n", highest);
+}
+
+void printLowestNumber(int lowest) {
+    printf("The lowest number is: %i \n", lowest);
+}
+
+void totalNumbers(int counter) {
+    printf("Total numbers entered : %i \n", counter);
+}
 
 int main() {
-    int numbersArray[0];
-    int i =  1;
-    int len = 0;
-    int num;
+    //Declaring Variables
+    
     char choice;
-    int quit = 0;
-
-
-
-
-
-
+    int highestNumber = 0;
+    int lowestNumber = 0;
+    int num;
+    int counter = 0;
+    int total = 0;
+    int average;
 
     do { //DO WHILE STARTS HERE
-        CLSUNIX;
-        //CLSWIN FOR UNIX/MAC USES
-        CLSWIN;
-        //CLSWIN for WINDOWS users
-        
+        ///// Menu Layout
         printf("########XXXXXXXXXXX##########\n");
         printf("-------- MAIN MENU ----------\n");
         printf("=============================\n");
@@ -34,49 +75,47 @@ int main() {
         printf("C) Display the Lowest Number entered \n");
         printf("D) Display the Average of all numbers entered \n");
         printf("E) Display how many numbers were entered \n");
-        printf("Q) Quit \n\n");
+        printf("Q) Quit \n\n");  ///// end Menu Layout
 
         printf("Enter a Letter: \n");
-        printf("LENGTH IS AT %i \n", len);
-        scanf("%c",&choice);
-
-        switch(choice) {
-
+        scanf("%c", &choice); //// choice selection
+        choice = toupper(choice);
+        switch (choice) {
             case 'A':
-                printf("Enter an integer: \n");
-                scanf("%i", &num);
-                numbersArray[len] = num;
-                len++;
-                break;
-
+                num = enterNumber();
+                highestNumber = findHighestNumber(num, highestNumber);
+                lowestNumber = findLowestNumber(num, lowestNumber);
+                total+= num;
+                counter++;
+                break; /// end of case A
+                
             case 'B':
-                printf("Option B \n");
-                break;
-
+                printHighestNumber(highestNumber);
+                break; /// end of Case B
+                
             case 'C':
-                printf("Option C \n");
-                break;
-
+                printLowestNumber(lowestNumber);
+                break; /// end of case C
+                
             case 'D':
-                printf("Option D \n");
-                break;
-
+                calcAverage(total, counter);
+                break; /// end of case D
+                
             case 'E':
-                for(int i = 0; i < len; i++) {
-                    printf("%i, ", numbersArray[i]);
-                }
-                printf("\n\n\n");
-                break;
+                totalNumbers(counter);
+                break; /// end of case E
 
             case 'Q':
-                printf("Quitting... \n");
-                quit = 1;
-                break;
-
+                printf("\n Goodbye... \n\n\n");
+                break; /// end of case Q
+                
             default:
                 printf("Pick another option \n");
+                break;
         }// END SWITCH
-
-    } while(quit != 1 ); ///WHILE quit DOESNT EQUAL 1;
-
+        
+    } while (choice != 'Q');
+    
+    return 0;
+    
 } //END MAIN
